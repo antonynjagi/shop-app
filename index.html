@@ -10,10 +10,12 @@
     <script src="./dexie.min.js"></script>
     
     <script>
-        if('serviceworker' in navigator){
-            window.addEventListener("load", () => {
-                navigator.serviceWorker.register("./sw.js")});
-        }
+        if ('serviceWorker' in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js");
+    });
+}
+
     </script>
 
 </head>
