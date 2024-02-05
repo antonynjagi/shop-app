@@ -1,6 +1,6 @@
 {
-    "name": "Shopping App",
-    "short_name": "Shopping App",
+    "name": "Shop App",
+    "short_name": "Shop App",
     "icons": [
         {
         "src": "./assets/icons-192.png",
@@ -21,7 +21,7 @@
     ],
     "theme_color": "#FFFFFF",
     "background_color": "#FFFFFF",
-    "start_url": "/shopping-app/",
+    "start_url": "/shop-app/",
     "display": "standalone",
     "orientaton": "potrait"
 }
