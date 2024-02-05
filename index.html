@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="icon" href="./assets/icon-192.png">
+    <link rel="stylesheet" href="./index.css">
+    <script src="./dexie.min.js"></script>
+    <script>
+        if('serviceworker' in navigator){
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")});
+        }
+    </script>
+
+</head>
+<body>
+<nav>
+    <p>My list</p>
+</nav>
+    <div class="container">
+        <form id="itemForm">
+            <label>Name of Item:<input type="text" id="nameInput" value="Bread" required></label>
+            <label>Quantity:<input type="number" id="quantityInput" value="1" required></label>
+            <label>Price:<input type="text" id="priceValue" value="10" required></label>
+        <button type="submit" id="addItemButton">Add Item</button>
+        </form>
+    </div>
+
+<div id="itemsDiv">
+    <!-- Item display will be dynamically added here -->
+</div>
+
+<div id="totalPrice"></div>
+
+
+<script src="index.js"></script>
+</body>
+</html>
