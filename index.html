@@ -24,10 +24,25 @@
     <p>My list</p>
 </nav>
     <div class="container">
+        <div id="productManagementDiv">
+            <h2>Product Management</h2>
+            <form id="productForm">
+                <label>Product Name:<input type="text" id="productNameInput" required></label>
+                <label>Product Price:<input type="number" id="productPriceInput" step="0.01" required></label>
+                <button type="submit" id="addProductButton">Add Product</button>
+            </form>
+            <div id="productsDiv">
+                <!-- Product list will be dynamically added here -->
+            </div>
+        </div>
         <form id="itemForm">
-            <label>Name of Item:<input type="text" id="nameInput" value="Bread" required></label>
+            <label>Name of Item:
+                <select id="productSelect" required>
+                    <option value="">-- Select Product --</option>
+                </select>
+            </label>
             <label>Quantity:<input type="number" id="quantityInput" value="1" required></label>
-            <label>Price:<input type="text" id="priceValue" value="10" required></label>
+            <label>Price:<input type="number" id="priceValue" readonly required></label>
         <button type="submit" id="addItemButton">Add Item</button>
         </form>
     </div>
@@ -38,6 +53,14 @@
 
 <div id="totalPrice"></div>
 
+<button id="finalizeSaleButton">Finalize Sale</button>
+<div id="receiptDiv"></div>
+
+<hr>
+<h2>Sales History</h2>
+<div id="salesHistoryDiv">
+    <!-- Sales history will be dynamically added here -->
+</div>
 
 <script src="index.js"></script>
 </body>

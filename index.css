@@ -1,83 +1,284 @@
-*{
-    margin: unset;
-    padding: unset;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Add box-sizing for easier layout management */
 }
 
-body{ background: #f2f2f2;}
+body {
+    font-family: sans-serif;
+    background: #f4f4f4; /* Slightly lighter background */
+    color: #333;
+    line-height: 1.6;
+}
 
-nav{
-   background: #00805a;
-    height: 3rem;
-    line-height: 3rem;
+.container {
+    width: 90%;
+    max-width: 1200px; /* Max width for wider screens */
+    margin: 20px auto; /* Centering and top/bottom margin */
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background: #00805a;
+    height: 4rem; /* Slightly taller */
+    line-height: 4rem;
     color: white;
     padding-left: 2rem;
+    margin-bottom: 1.5rem; /* Increased margin */
+    border-radius: 8px 8px 0 0; /* Rounded corners for top */
+}
+
+/* --- General Section Styling --- */
+div[id$="Div"], form[id$="Form"] { /* Target common divs and forms */
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+}
+
+h2 {
+    color: #00573d; /* Darker green for headings */
     margin-bottom: 1rem;
 }
 
-.container{
-    padding: 1rem;
-}
-
-#itemForm label{
+/* --- Form Styling --- */
+form label {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem; /* Consistent margin for labels */
+    font-weight: bold;
 }
 
-#itemForm input {
-    height: 2rem;
-    text-align: center;
-    border: 1px solid #bfbdbf;
+form input[type="text"],
+form input[type="number"],
+form select {
+    width: 100%; /* Make inputs take full width of their container */
+    padding: 0.75rem;
+    margin-bottom: 1rem; /* Space below input */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-#quantityInput, #priceValue{
-    width: 3rem;
+form input[type="number"] {
+    width: auto; /* Allow number inputs to be smaller if needed */
+    min-width: 80px;
+}
+/* Specific for item form quantity and price */
+#itemForm #quantityInput,
+#itemForm #priceValue {
+    width: 80px; /* Keep these smaller */
 }
 
-#addItemButton{
-    border: unset;
+
+form button[type="submit"] {
+    border: none;
     background: #00805a;
     color: #fff;
-    padding: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#itemsDiv{
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+form button[type="submit"]:hover {
+    background: #00573d; /* Darker shade on hover */
 }
 
-.item{
+/* --- Product Management Styling --- */
+#productManagementDiv { /* Combined product form and list container */
+    /* Add specific styles if needed beyond general section styling */
+}
+
+#productsDiv .product-item, /* Assuming .product-item was used in JS */
+#productsDiv > div { /* Fallback if no class */
+    border: 1px solid #e0e0e0;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex; /* For better alignment of name and price */
+    justify-content: space-between;
+}
+
+/* --- Shopping Cart Styling --- */
+#itemsDiv {
+    margin-top: 1rem; /* Reduced from 3rem as sections now have padding */
+    margin-bottom: 1rem;
+}
+
+.item {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    background: #eaeaea;
+    grid-template-columns: auto 1fr auto; /* Checkbox, info, delete */
+    gap: 10px; /* Gap between grid items */
+    background: #f9f9f9;
+    margin-bottom: 0.75rem; /* Increased margin */
+    padding: 0.75rem; /* Added padding */
+    border: 1px solid #eee;
+    border-radius: 4px;
+    align-items: center; /* Vertically align items */
+}
+
+.item .checkbox { /* Target checkbox specifically if needed */
+    justify-self: center; /* Center checkbox in its cell */
+    width: 1.5rem; /* Adjust size */
+    height: 1.5rem;
+}
+
+.itemInfo { /* Renamed for consistency, was #itemInfo (ID should be unique) */
+    text-align: left; /* Align text to left */
+    padding: 0 10px;
+}
+.itemInfo p {
+    margin: 0.25rem 0;
+}
+
+
+.deleteButton {
+    margin: 0; /* Reset margin */
+    border: none;
+    background: #c0392b; /* More modern red */
+    color: #fff;
+    font-size: 0.9rem;
+    width: auto; /* Auto width based on padding */
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+    background: #a93226;
+}
+
+.purchased {
+    background: #d4efdf; /* Lighter green for purchased */
+    color: #145a32;
+}
+
+.purchased .itemInfo p { /* Ensure text-decoration applies to p within itemInfo */
+    text-decoration: line-through;
+}
+
+#totalPrice {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00573d;
+    text-align: right;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e6f7f2;
+    border-radius: 4px;
+}
+
+/* --- Receipt Styling --- */
+#receiptDiv {
+    border: 1px solid #00805a; /* Green border */
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    background-color: #e6f7f2; /* Light green background */
+}
+#receiptDiv h3, #receiptDiv h4 {
+    color: #00573d;
+}
+#receiptDiv ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+#receiptDiv li {
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+    border-bottom: 1px dashed #b2dfdb;
+}
+#receiptDiv li:last-child {
+    border-bottom: none;
+}
+
+
+/* --- Sales History Styling --- */
+#salesHistoryDiv h2 { /* Already covered by general h2 */
+    margin-bottom: 1rem;
+}
+
+.sale-record {
+    border: 1px solid #cce5ff; /* Light blue border */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    background-color: #f0f8ff; /* Alice blue background */
+}
+.sale-record h4 {
+    color: #004085; /* Darker blue for sale ID */
     margin-bottom: 0.5rem;
 }
-.checkbox{
-    height: 100%;
-    width: 2.5rem;
+.sale-record h5 { /* For "Items:" subheading */
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    color: #004085;
+}
+.sale-record ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.sale-record li {
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
 }
 
-.itemInfo{
-    text-align: center;
+/* Responsive Considerations */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    nav {
+        padding-left: 1rem;
+        font-size: 0.9rem; /* Adjust font size for smaller nav */
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form select {
+        font-size: 0.95rem; /* Slightly smaller font in forms on mobile */
+    }
+
+    form button[type="submit"] {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .item {
+        grid-template-columns: auto 1fr auto; /* Adjust if needed, but might be fine */
+        font-size: 0.9rem;
+    }
+    .itemInfo {
+      padding: 0 5px;
+    }
+
+    #totalPrice {
+        font-size: 1.3rem;
+    }
 }
 
-.deleteButton{
-    margin: 0 0 0 auto;
-    border: unset;
-    background: #b10000;
-    color: #fff;
-    font-size: 0.8rem;
-    width: 2.5rem;
-    height: 100%;
+@media (max-width: 480px) {
+    /* More aggressive changes for very small screens if needed */
+    .item {
+        /* Could stack items if layout breaks, e.g., by changing to display: block */
+    }
+    #itemForm label, #productForm label {
+        /* Stack label and input if side-by-side becomes too cramped */
+    }
 }
 
-.deleteButton:active{
-    margin-top: 3px;
-}
-
-.purchased{
-    background: #00805a;
-    color: #fff;
-}
-.purchased p{
-    text-decoration: line-through;
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 2rem 0;
 }
